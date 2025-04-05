@@ -9,128 +9,70 @@ title: Medias
 <h1> Medias</h1>
 <br>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
 
-<style type="text/css">
-  .text-center {
-     text-align: center;
-  }
-
-  div.gallery {
-  border: 1px solid #ccc;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
+/* Reset some default styles */
 * {
-  box-sizing: border-box;
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.responsive {
-  padding: 0 6px;
-  float: left;
-  width: 24.99999%;
+/* Gallery container */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-rows: repeat(4, 200px); /* 4 rows, each 200px high */
+    gap: 10px; /* Space between images */
+    padding: 10px;
 }
 
-@media only screen and (max-width: 700px) {
-  .responsive {
-    width: 49.99999%;
-    margin: 6px 0;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .responsive {
+/* Gallery item styles */
+.gallery-item img {
     width: 100%;
-  }
+    height: 100%;
+    object-fit: cover; /* Ensure images fill their container */
+    border-radius: 8px;
 }
 
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
+/* Optional: Add a hover effect */
+.gallery-item:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+    transition: transform 0.3s ease;
 }
-  
+
+
 </style>
-<h2> Videos</h2>
-<P>
-<div class="text-center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/_f4ShErGqf0?si=_RuwNF8OcSXUGfVO"
-  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-  gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</P>
-</div>
-<br>
-<br>
-<h2> Photos </h2>
-
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="PP-1.JPG">
-      <img src="PP-1.JPG" alt="\" width="600" height="400">
-    </a>
-  </div>
-</div>
 
 
 
 
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="PP-5.jpg">
-      <img src="PP-5.jpg" alt="Indra Prasad Tiwari" width="600" height="400">
-    </a>
-    
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="PP-31.jpg">
-      <img src="PP-31.jpg" alt="Indra Prasad Tiwari" width="600" height="300">
-    </a>
-    
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="PP-4.jpg">
-      <img src="PP-4.jpg" alt="Indra Prasad Tiwari" width="600" height="400">
-    </a>
-  </div>
-</div>
-
-
-  
-
-
-
-
-
-
-
-<div class="clearfix"></div>
-
-<div style="padding:6px;">
-
-
-
-
-  
-
-
+</head>
+<body>
+    <div class="gallery">
+        <div class="gallery-item"><img src="image1.jpg" alt="Image 1"></div>
+        <div class="gallery-item"><img src="image2.jpg" alt="Image 2"></div>
+        <div class="gallery-item"><img src="image3.jpg" alt="Image 3"></div>
+        <div class="gallery-item"><img src="image4.jpg" alt="Image 4"></div>
+        <div class="gallery-item"><img src="image5.jpg" alt="Image 5"></div>
+        <div class="gallery-item"><img src="image6.jpg" alt="Image 6"></div>
+        <div class="gallery-item"><img src="image7.jpg" alt="Image 7"></div>
+        <div class="gallery-item"><img src="image8.jpg" alt="Image 8"></div>
+        <div class="gallery-item"><img src="image9.jpg" alt="Image 9"></div>
+        <div class="gallery-item"><img src="image10.jpg" alt="Image 10"></div>
+        <div class="gallery-item"><img src="image11.jpg" alt="Image 11"></div>
+        <div class="gallery-item"><img src="image12.jpg" alt="Image 12"></div>
+        <div class="gallery-item"><img src="image13.jpg" alt="Image 13"></div>
+        <div class="gallery-item"><img src="image14.jpg" alt="Image 14"></div>
+        <div class="gallery-item"><img src="image15.jpg" alt="Image 15"></div>
+        <div class="gallery-item"><img src="image16.jpg" alt="Image 16"></div>
+    </div>
+</body>
+</html>
 

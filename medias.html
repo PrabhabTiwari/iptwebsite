@@ -11,7 +11,11 @@ title: Medias
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport meta tag -->
+   
+    
     
    
     <style>
@@ -76,8 +80,27 @@ title: Medias
      text-align: center;
   }
 
-        
 
+   /* Responsive adjustments */
+    @media (max-width: 1024px) {
+        .gallery {
+            grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .gallery {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .gallery {
+            grid-template-columns: 1fr; /* 1 column for mobile devices */
+        }
+
+        
+    }
 </style>
 </head>
 <body>

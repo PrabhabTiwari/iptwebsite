@@ -80,11 +80,34 @@ title: Medias
      text-align: center;
   }
 
+ /* Video container for responsive embedding */
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+        margin-bottom: 20px; /* Space between the video and next section */
+    }
 
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+        
    /* Responsive adjustments */
     @media (max-width: 1024px) {
         .gallery {
             grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+        }
+         .video-container iframe {
+            width: 100%;
+            height: auto; /* Adjust the height relative to the width */
         }
     }
 
@@ -92,13 +115,20 @@ title: Medias
         .gallery {
             grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
         }
+         .video-container iframe {
+            width: 100%;
+            height: auto; /* Adjust the height relative to the width */
+        }
     }
 
     @media (max-width: 480px) {
         .gallery {
             grid-template-columns: 1fr; /* 1 column for mobile devices */
         }
-
+.video-container iframe {
+            width: 100%;
+            height: auto; /* Adjust the height relative to the width */
+        }
         
     }
 </style>
@@ -108,7 +138,7 @@ title: Medias
 
     <h2> Videos</h2>
 <P><br>
-<div class="text-center">
+<div class="text-center video-container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/_f4ShErGqf0?si=_RuwNF8OcSXUGfVO"
   title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
   gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

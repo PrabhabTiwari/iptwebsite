@@ -1,233 +1,544 @@
 ---
 layout: base
-title: Reasearch Paper and writing
-
+title: Research Publications
 ---
-<H1>Research Paper and writing </H1><p></p>
-<p> 
-<p><small>Last updated 8 April 2025</small></p>
-<br>
-<br>
 
-<html lang="en">
-<head>
+<div class="research-container">
+  <header class="research-header">
+    <h1>Research Publications</h1>
+    <p class="last-updated">Last updated: June 9, 2025</p>
+    <div class="search-filter">
+      <input type="text" id="search-input" placeholder="Search publications...">
+      <select id="filter-category">
+        <option value="all">All Categories</option>
+        <option value="development">Development</option>
+        <option value="urbanization">Urbanization</option>
+        <option value="tourism">Tourism</option>
+        <option value="sustainability">Sustainability</option>
+        <option value="education">Education</option>
+      </select>
+    </div>
+  </header>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport meta tag -->
-   
-    
-    
-   <style>
- 
-
-    .container {
-      max-width: 900px;
-      margin: auto;
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --text-color: #333;
+      --light-gray: #f8f9fa;
+      --medium-gray: #e9ecef;
+      --dark-gray: #495057;
     }
 
-   
+    .research-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    .research-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--medium-gray);
+      padding-bottom: 1.5rem;
+    }
+
+    .research-header h1 {
+      color: var(--primary-color);
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated {
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-filter {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    #search-input {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--medium-gray);
+      border-radius: 4px;
+      width: 300px;
+      font-size: 0.95rem;
+    }
+
+    #filter-category {
+      padding: 0.6rem;
+      border: 1px solid var(--medium-gray);
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    .publications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: 1.5rem;
+    }
 
     .paper-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--secondary-color);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .paper-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .paper-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
     }
 
     .paper-title {
-      font-size: 1.3em;
-      color: #007BFF;
-      margin-bottom: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin: 0;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .paper-year {
+      background: var(--light-gray);
+      color: var(--dark-gray);
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-left: 1rem;
     }
 
     .paper-desc {
-      font-size: 1em;
-      color: #444;
-      margin-bottom: 15px;
+      color: var(--text-color);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+      flex: 1;
+    }
+
+    .paper-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .paper-links {
+      display: flex;
+      gap: 0.8rem;
     }
 
     .paper-links a {
-      display: inline-block;
-      margin-right: 10px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
       text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .pdf-link {
+      background: var(--secondary-color);
       color: white;
-      background: #007BFF;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 0.9em;
-      transition: background 0.3s ease;
     }
 
-    .paper-links a:hover {
-      background: #0056b3;
+    .pdf-link:hover {
+      background: #2980b9;
     }
 
-    @media (max-width: 600px) {
-      .paper-links a {
-        display: block;
-        margin-bottom: 10px;
+    .share-link {
+      background: var(--light-gray);
+      color: var(--dark-gray);
+    }
+
+    .share-link:hover {
+      background: var(--medium-gray);
+    }
+
+    .paper-links i {
+      margin-right: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .paper-category {
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+      background: var(--light-gray);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .publications-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .search-filter {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      #search-input {
+        width: auto;
       }
     }
-  </style>
-</head>
-<body>
 
-  <div class="container">
-  
+    /* Loading animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .paper-card {
+      animation: fadeIn 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    .paper-card:nth-child(1) { animation-delay: 0.1s; }
+    .paper-card:nth-child(2) { animation-delay: 0.2s; }
+    .paper-card:nth-child(3) { animation-delay: 0.3s; }
+    /* Continue for as many cards as you have */
+  </style>   
+
+
+ 
+
+  <div class="publications-grid">
+
+
+ <!-- Paper 1 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">गण्डकी प्रदेशको आर्थिक समृद्धि</h3>
+        <span class="paper-year">2025</span>
+      </div>
+      <p class="paper-desc">An in-depth exploration of Gandaki Province’s economic prosperity agenda, focusing on inclusive empowerment, sustainable tourism, and the promotion of social entrepreneurship for transformative regional development.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="गण्डकी प्रदेशको आर्थिक समृद्धि.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="गण्डकी प्रदेशको आर्थिक समृद्धि.pdf" class="share-link share-email" data-title="Development Dimensions of Nepal" data-filename="Development Dimensions of Nepal-2018.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Development</span>
+      </div>
+    </div>
+
+
+
+
 
     <!-- Paper 1 -->
     <div class="paper-card">
-      <div class="paper-title">Development Dimensions of Nepal-2018</div>
-      <div class="paper-desc">
-       
+      <div class="paper-header">
+        <h3 class="paper-title">Development Dimensions of Nepal</h3>
+        <span class="paper-year">2018</span>
       </div>
-      <div class="paper-links">
-        <a href="Development Dimensions of Nepal-2018.pdf" target="_blank">📄 View PDF</a>
-        <a href="mailto:?subject=AI Ethics Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on AI ethics:%0D%0ATitle: Understanding AI Ethics in Modern Applications%0D%0ALink: https://example.com/papers/ai-ethics.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+      <p class="paper-desc">A comprehensive analysis of Nepal's development landscape, examining economic, social, and environmental dimensions.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="Development Dimensions of Nepal-2018.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="Development Dimensions of Nepal-2018.pdf" class="share-link share-email" data-title="Development Dimensions of Nepal" data-filename="Development Dimensions of Nepal-2018.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Development</span>
       </div>
     </div>
 
     <!-- Paper 2 -->
     <div class="paper-card">
-      <div class="paper-title">Revitalization of the National Urbanization Policy and Strategy</div>
-      <div class="paper-desc">
-      
-    </div>
-      <div class="paper-links">
-        <a href="Revitalization of the National Urbanization Policy and Strategy.pdf" target="_blank">📄 View PDF</a>
-        <a href="mailto:?subject=NLP Research Paper&body=Hi,%0D%0A%0D%0AHere's a great paper on Natural Language Processing:%0D%0ATitle: Neural Networks for Natural Language Processing%0D%0ALink: https://example.com/papers/nlp-networks.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+      <div class="paper-header">
+        <h3 class="paper-title">Revitalization of the National Urbanization Policy and Strategy</h3>
+        <span class="paper-year">2020</span>
+      </div>
+      <p class="paper-desc">Examining contemporary approaches to urban development and policy frameworks for sustainable urbanization.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="Revitalization of the National Urbanization Policy and Strategy.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="Revitalization of the National Urbanization Policy and Strategy.pdf" class="share-link share-email" data-title="Revitalization of the National Urbanization Policy and Strategy" data-filename="Revitalization of the National Urbanization Policy and Strategy.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Urbanization</span>
       </div>
     </div>
 
     <!-- Paper 3 -->
     <div class="paper-card">
-        <div class="paper-title">प्रदेश नं ४ र पर्यटन विकास</div>
-        <div class="paper-desc">
-         
+      <div class="paper-header">
+        <h3 class="paper-title">प्रदेश नं ४ र पर्यटन विकास</h3>
+        <span class="paper-year">2019</span>
       </div>
+      <p class="paper-desc">An exploration of tourism development opportunities in Province No. 4 of Nepal.</p>
+      <div class="paper-footer">
         <div class="paper-links">
-          <a href="प्रदेश नं ४ र पर्यटन विकास.pdf" target="_blank">📄 View PDF</a>
-          <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+          <a href="प्रदेश नं ४ र पर्यटन विकास.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="प्रदेश नं ४ र पर्यटन विकास.pdf" class="share-link share-email" data-title="प्रदेश नं ४ र पर्यटन विकास" data-filename="प्रदेश नं ४ र पर्यटन विकास.pdf">
+            <i>📤</i> Share
+          </a>
         </div>
+        <span class="paper-category">Tourism</span>
       </div>
-
-
-<!-- Paper 4 -->
-<div class="paper-card">
-    <div class="paper-title">Multimodal transport and logistics for rising Asia </div>
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href="Multimodal transport and logistics for rising Asia.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
     </div>
-  </div>
 
-
-<!-- Paper 5 -->
-<div class="paper-card">
-    <div class="paper-title"> पोखरामा शैक्षिक पर्यटन र उच्चशिक्षाको सम्भावना </div>
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href="पोखरामा शैक्षिक पर्यटन र उच्चशिक्षाको सम्भावना.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+    <!-- Paper 4 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">Multimodal Transport and Logistics for Rising Asia</h3>
+        <span class="paper-year">2021</span>
+      </div>
+      <p class="paper-desc">Analyzing transportation infrastructure and logistics networks to support Asia's economic growth.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="Multimodal transport and logistics for rising Asia.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="Multimodal transport and logistics for rising Asia.pdf" class="share-link share-email" data-title="Multimodal Transport and Logistics for Rising Asia" data-filename="Multimodal transport and logistics for rising Asia.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Development</span>
+      </div>
     </div>
-  </div>
 
-  <!-- Paper 6 -->
-<div class="paper-card">
-    <div class="paper-title">Social responsibility can it contribute for sustainable welfarism </div>
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href="Social responsibility can it contribute for sustainable welfarism.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+    <!-- Paper 5 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">पोखरामा शैक्षिक पर्यटन र उच्चशिक्षाको सम्भावना</h3>
+        <span class="paper-year">2019</span>
+      </div>
+      <p class="paper-desc">Exploring the potential for educational tourism and higher education development in Pokhara.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="पोखरामा शैक्षिक पर्यटन र उच्चशिक्षाको सम्भावना.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="पोखरामा शैक्षिक पर्यटन र उच्चशिक्षाको सम्भावना.pdf" class="share-link share-email" data-title="पोखरामा शैक्षिक पर्यटन र उच्चशिक्षाको सम्भावना" data-filename="पोखरामा शैक्षिक पर्यटन र उच्चशिक्षाको सम्भावना.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Education</span>
+      </div>
     </div>
-  </div>
 
-  <!-- Paper 7 -->
-<div class="paper-card">
-    <div class="paper-title">Keynote speech on sustainable development</div>
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href="Keynote speech on sustainable development.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+    <!-- Paper 6 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">Social Responsibility and Sustainable Welfarism</h3>
+        <span class="paper-year">2020</span>
+      </div>
+      <p class="paper-desc">Investigating how corporate social responsibility can contribute to sustainable welfare systems.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="Social responsibility can it contribute for sustainable welfarism.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="Social responsibility can it contribute for sustainable welfarism.pdf" class="share-link share-email" data-title="Social Responsibility and Sustainable Welfarism" data-filename="Social responsibility can it contribute for sustainable welfarism.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Sustainability</span>
+      </div>
     </div>
-  </div>
 
-  <!-- Paper 8 -->
-<div class="paper-card">
-    <div class="paper-title">लेखनाथ नगर विकास र यस्का शैक्षिक सम्भावनाहरू </div>
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href="लेखनाथ नगर विकास र यस्का शैक्षिक सम्भावनाहरू.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+    <!-- Paper 7 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">Keynote Speech on Sustainable Development</h3>
+        <span class="paper-year">2022</span>
+      </div>
+      <p class="paper-desc">Key insights and frameworks for achieving sustainable development goals in emerging economies.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="Keynote speech on sustainable development.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="Keynote speech on sustainable development.pdf" class="share-link share-email" data-title="Keynote Speech on Sustainable Development" data-filename="Keynote speech on sustainable development.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Sustainability</span>
+      </div>
     </div>
-  </div>
 
-  <!-- Paper 9 -->
-<div class="paper-card">
-    <div class="paper-title">लेखनाथको विकासमा पोखरा विश्वविद्यालयको भूमिका</div>
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href="लेखनाथको विकासमा पोखरा विश्वविद्यालयको भूमिका.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+    <!-- Paper 8 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">लेखनाथ नगर विकास र यस्का शैक्षिक सम्भावनाहरू</h3>
+        <span class="paper-year">2018</span>
+      </div>
+      <p class="paper-desc">Analysis of urban development and educational opportunities in Lekhnath Municipality.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="लेखनाथ नगर विकास र यस्का शैक्षिक सम्भावनाहरू.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="लेखनाथ नगर विकास र यस्का शैक्षिक सम्भावनाहरू.pdf" class="share-link share-email" data-title="लेखनाथ नगर विकास र यस्का शैक्षिक सम्भावनाहरू" data-filename="लेखनाथ नगर विकास र यस्का शैक्षिक सम्भावनाहरू.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Urbanization</span>
+      </div>
     </div>
-  </div>
-  
- 
 
-
-  <!-- Paper 11 -->
-  <div class="paper-card">
-    <div class="paper-title">  Globalization article for Rotary </div>  
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href=" Globalization article for Rotary.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+    <!-- Paper 9 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">लेखनाथको विकासमा पोखरा विश्वविद्यालयको भूमिका</h3>
+        <span class="paper-year">2019</span>
+      </div>
+      <p class="paper-desc">Examining the role of Pokhara University in the development of Lekhnath region.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="लेखनाथको विकासमा पोखरा विश्वविद्यालयको भूमिका.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="लेखनाथको विकासमा पोखरा विश्वविद्यालयको भूमिका.pdf" class="share-link share-email" data-title="लेखनाथको विकासमा पोखरा विश्वविद्यालयको भूमिका" data-filename="लेखनाथको विकासमा पोखरा विश्वविद्यालयको भूमिका.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Education</span>
+      </div>
     </div>
-  </div>
+
+    <!-- Paper 10 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">Globalization and Its Impacts</h3>
+        <span class="paper-year">2021</span>
+      </div>
+      <p class="paper-desc">An article examining the effects of globalization on developing economies, prepared for Rotary International.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="Globalization article for Rotary.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="Globalization article for Rotary.pdf" class="share-link share-email" data-title="Globalization and Its Impacts" data-filename="Globalization article for Rotary.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Development</span>
+      </div>
+    </div>
+
+    <!-- Paper 11 -->
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">Ecological Variation and Crop Cultivation</h3>
+        <span class="paper-year">2020</span>
+      </div>
+      <p class="paper-desc">Study of agricultural adaptation strategies to ecological variations in mountainous regions.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="Eco variation & crop cultivation.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="Eco variation & crop cultivation.pdf" class="share-link share-email" data-title="Ecological Variation and Crop Cultivation" data-filename="Eco variation & crop cultivation.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Sustainability</span>
+      </div>
+    </div>
+
     <!-- Paper 12 -->
-<div class="paper-card">
-    <div class="paper-title"> Eco variation & crop cultivation  </div>  
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href=" Eco variation & crop cultivation.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
+    <div class="paper-card">
+      <div class="paper-header">
+        <h3 class="paper-title">जलवायु परिवर्तन र यसका असर माथिको टिप्पणी</h3>
+        <span class="paper-year">2022</span>
+      </div>
+      <p class="paper-desc">Critical commentary on climate change impacts and mitigation strategies for Nepal.</p>
+      <div class="paper-footer">
+        <div class="paper-links">
+          <a href="जलवायु परिवर्तन र यसका असर माथिको टिप्पणी.pdf" target="_blank" class="pdf-link">
+            <i>📄</i> View PDF
+          </a>
+          <a href="जलवायु परिवर्तन र यसका असर माथिको टिप्पणी.pdf" class="share-link share-email" data-title="जलवायु परिवर्तन र यसका असर माथिको टिप्पणी" data-filename="जलवायु परिवर्तन र यसका असर माथिको टिप्पणी.pdf">
+            <i>📤</i> Share
+          </a>
+        </div>
+        <span class="paper-category">Sustainability</span>
+      </div>
     </div>
   </div>
-    <!-- Paper 13 -->
-<div class="paper-card">
-    <div class="paper-title"> जलवायु परिवर्तन र यसका असर माथिको टिप्पणी  </div>  
-    <div class="paper-desc">
-     
-  </div>
-    <div class="paper-links">
-      <a href=" जलवायु परिवर्तन र यसका असर माथिको टिप्पणी.pdf" target="_blank">📄 View PDF</a>
-      <a href="mailto:?subject=Development Dimensions of Nepal - Research Paper&body=Hi,%0D%0A%0D%0ACheck out this research paper on Nepal's development:%0D%0ATitle: Development Dimensions of Nepal - 2018%0D%0ALink: https://example.com/Development%20Dimensions%20of%20Nepal-2018.pdf%0D%0A%0D%0ARegards!" target="_blank">📤 Share via Email</a>
-    </div>
-  </div>
+</div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Enhanced email sharing functionality
+    document.querySelectorAll('.share-email').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const paperTitle = this.getAttribute('data-title');
+        const fileName = this.getAttribute('data-filename');
+        const currentUrl = window.location.href.split('?')[0];
+        
+        const subject = `Research Publication: ${paperTitle}`;
+        const body = `Dear Colleague,\n\nI thought you might find this research publication interesting:\n\n**Title:** ${paperTitle}\n\n**Abstract:** [Brief description]\n\n**Link:** ${currentUrl}\n\nYou can download the full paper here: ${currentUrl}/${encodeURIComponent(fileName)}\n\nBest regards,\n[Your Name]`;
+        
+        window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    });
 
+    // Search functionality
+    const searchInput = document.getElementById('search-input');
+    const filterCategory = document.getElementById('filter-category');
+    const paperCards = document.querySelectorAll('.paper-card');
 
-  </div>
+    function filterPublications() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const category = filterCategory.value;
 
-    </div>
-</body>
-</html>
+      paperCards.forEach(card => {
+        const title = card.querySelector('.paper-title').textContent.toLowerCase();
+        const desc = card.querySelector('.paper-desc').textContent.toLowerCase();
+        const cardCategory = card.querySelector('.paper-category').textContent.toLowerCase();
 
+        const matchesSearch = title.includes(searchTerm) || desc.includes(searchTerm);
+        const matchesCategory = category === 'all' || cardCategory.includes(category.toLowerCase());
+
+        if (matchesSearch && matchesCategory) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterPublications);
+    filterCategory.addEventListener('change', filterPublications);
+  });
+</script>

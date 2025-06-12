@@ -3,13 +3,10 @@ layout: base
 title: Research Publications
 ---
 
-<div class="research-container">
-  <header class="research-header">
-    <h1>Research Publications</h1>
-   <p><small>Last updated 18 Feb 2025</small></p>
-   
-  </header>
-
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research and Perspective</title>
   <style>
     :root {
       --primary-color: #2c3e50;
@@ -21,11 +18,17 @@ title: Research Publications
       --dark-gray: #495057;
     }
 
-    .research-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
+    body {
+      margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    .research-container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
     }
 
     .research-header {
@@ -52,27 +55,24 @@ title: Research Publications
       display: flex;
       gap: 1rem;
       justify-content: center;
+      flex-wrap: wrap;
       margin-top: 1.5rem;
     }
 
-    #search-input {
+    #search-input,
+    #filter-category {
       padding: 0.6rem 1rem;
       border: 1px solid var(--medium-gray);
       border-radius: 4px;
-      width: 300px;
       font-size: 0.95rem;
-    }
-
-    #filter-category {
-      padding: 0.6rem;
-      border: 1px solid var(--medium-gray);
-      border-radius: 4px;
-      font-size: 0.95rem;
+      width: 100%;
+      max-width: 300px;
+      box-sizing: border-box;
     }
 
     .publications-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
@@ -86,6 +86,8 @@ title: Research Publications
       display: flex;
       flex-direction: column;
       height: 100%;
+      animation: fadeIn 0.4s ease forwards;
+      opacity: 0;
     }
 
     .paper-card:hover {
@@ -117,6 +119,7 @@ title: Research Publications
       font-size: 0.8rem;
       font-weight: 500;
       margin-left: 1rem;
+      white-space: nowrap;
     }
 
     .paper-desc {
@@ -132,11 +135,14 @@ title: Research Publications
       justify-content: space-between;
       align-items: center;
       margin-top: auto;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .paper-links {
       display: flex;
       gap: 0.8rem;
+      flex-wrap: wrap;
     }
 
     .paper-links a {
@@ -181,46 +187,65 @@ title: Research Publications
       border-radius: 4px;
     }
 
-    @media (max-width: 768px) {
-      .publications-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 480px) {
+      .research-header h1 {
+        font-size: 1.6rem;
       }
-      
-      .search-filter {
-        flex-direction: column;
-        align-items: stretch;
+
+      .paper-title {
+        font-size: 1rem;
       }
-      
-      #search-input {
-        width: auto;
+
+      .paper-desc {
+        font-size: 0.9rem;
+      }
+
+      .paper-links a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
       }
     }
 
-    /* Loading animation */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .paper-card {
-      animation: fadeIn 0.4s ease forwards;
-      opacity: 0;
-    }
-
     .paper-card:nth-child(1) { animation-delay: 0.1s; }
     .paper-card:nth-child(2) { animation-delay: 0.2s; }
     .paper-card:nth-child(3) { animation-delay: 0.3s; }
-    /* Continue for as many cards as you have */
-  </style>   
+    .paper-card:nth-child(4) { animation-delay: 0.4s; }
+    .paper-card:nth-child(5) { animation-delay: 0.5s; }
+    .paper-card:nth-child(6) { animation-delay: 0.6s; }
+    .paper-card:nth-child(7) { animation-delay: 0.7s; }
+    .paper-card:nth-child(8) { animation-delay: 0.8s; }
+    .paper-card:nth-child(9) { animation-delay: 0.9s; }
+    .paper-card:nth-child(10) { animation-delay: 1s; }
+    .paper-card:nth-child(11) { animation-delay: 1.1s; }
+    .paper-card:nth-child(12) { animation-delay: 1.2s; }
+  </style>
+</head>
+<body>
 
-
- 
+<div class="research-container">
+  <header class="research-header">
+    <h1>Research</h1>
+    <p class="last-updated">Last updated: June 9, 2025</p>
+    <div class="search-filter">
+      <input type="text" id="search-input" placeholder="Search publications...">
+      <select id="filter-category">
+        <option value="all">All Categories</option>
+        <option value="development">Development</option>
+        <option value="urbanization">Urbanization</option>
+        <option value="tourism">Tourism</option>
+        <option value="sustainability">Sustainability</option>
+        <option value="education">Education</option>
+      </select>
+    </div>
+  </header>
 
   <div class="publications-grid">
-
-
- <!-- Paper 1 -->
-    <div class="paper-card">
+     <div class="paper-card">
       <div class="paper-header">
         <h3 class="paper-title">गण्डकी प्रदेशको आर्थिक समृद्धि</h3>
         <span class="paper-year">2025</span>
@@ -243,7 +268,7 @@ title: Research Publications
 
 
 
-    <!-- Paper 1 -->
+    
     <div class="paper-card">
       <div class="paper-header">
         <h3 class="paper-title">Development Dimensions of Nepal</h3>
@@ -482,28 +507,36 @@ title: Research Publications
         <span class="paper-category">Sustainability</span>
       </div>
     </div>
+  </div>->
+    <!-- Copy your .paper-card blocks from your original HTML -->
   </div>
 </div>
 
+
+<div class="research-container">
+  <header class="research-header">
+    <h1>My opinions</h1>
+    <p class="last-updated">COMMING SOON</p>
+
+
+
+
+
+
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Enhanced email sharing functionality
+  document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.share-email').forEach(button => {
-      button.addEventListener('click', function(e) {
+      button.addEventListener('click', function (e) {
         e.preventDefault();
-        
         const paperTitle = this.getAttribute('data-title');
         const fileName = this.getAttribute('data-filename');
         const currentUrl = window.location.href.split('?')[0];
-        
         const subject = `Research Publication: ${paperTitle}`;
         const body = `Dear Colleague,\n\nI thought you might find this research publication interesting:\n\n**Title:** ${paperTitle}\n\n**Abstract:** [Brief description]\n\n**Link:** ${currentUrl}\n\nYou can download the full paper here: ${currentUrl}/${encodeURIComponent(fileName)}\n\nBest regards,\n[Your Name]`;
-        
         window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });
     });
 
-    // Search functionality
     const searchInput = document.getElementById('search-input');
     const filterCategory = document.getElementById('filter-category');
     const paperCards = document.querySelectorAll('.paper-card');
@@ -520,11 +553,7 @@ title: Research Publications
         const matchesSearch = title.includes(searchTerm) || desc.includes(searchTerm);
         const matchesCategory = category === 'all' || cardCategory.includes(category.toLowerCase());
 
-        if (matchesSearch && matchesCategory) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = (matchesSearch && matchesCategory) ? 'flex' : 'none';
       });
     }
 
@@ -532,3 +561,9 @@ title: Research Publications
     filterCategory.addEventListener('change', filterPublications);
   });
 </script>
+
+
+
+ 
+</body>
+</html>
